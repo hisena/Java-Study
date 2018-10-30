@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var array = ["기정", "강준", "광호","명식"]; 
+//var str = array.join(); //서버 통신할 때 자주 이용하는 것
+var str = array.join("|*|");
+console.log(str);
+
+//array.reverse();
+
+array.sort(); //자연수나 문자일 때만 가능
+console.log(array.join());
+
+var array2 = [100, 2, 5, 1, 105];
+array2.sort();
+for ( var i in array2) {
+	console.log(array2[i]); //문자로 정렬함(1, 2, 5로 안나오고 1, 100, 105로 나옴)
+}
+
+// 정렬기준을 위해 이름없은 콜백함수 전달
+array2.sort(function(x, y){
+	return x - y;
+});
+
+for ( var key in array2) {
+	console.log("array2의 키값 :" + array2[key]);	
+}
+
+var array3 = [1, 2, 3, 4, 5];
+var subArray = array3.slice(0, 2); //2: 개수 2개, slice는 0과 1번째꺼 복사하는 것
+console.log(subArray.toString());
+for ( var key in array3) {
+	console.log(array3[key]);	
+}
+
+var subArray = array3.splice(0, 2); //2: 개수 2개, splice는 0과 1번째꺼 잘라서 가는 것
+console.log(subArray.toString());
+for ( var key in array3) {
+	console.log(array3[key]);	
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

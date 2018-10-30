@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM 이해</title>
+<script type="text/javascript">
+function toggle(titleE){ //밑에 있는 anchor element가 전달됨
+	var title = titleE.firstChild.nodeValue; //title이 댓글숨기기
+	var reply = document.getElementById("reply");
+	if(title == '댓글숨기기'){
+		titleE.firstChild.nodeValue = "댓글보이기";
+		document.body.removeChild(reply);//밑에 있는 명령어와 똑같음. DOM으로 처리하는 것
+		//reply.style.display = "none"; //CSS 속성으로 지우는 것
+		//reply.style.visibility = "hidden"; //이건 구조 자체가 남아있음
+	}else{
+		titleE.firstChild.nodeValue = "댓글숨기기";
+		document.body.appendChild(reply);
+		//reply.style.display = "block";
+	}
+}
+</script>
+</head>
+<body>
+<!-- <a id="eventSoruce" href="javascript:toggle(document.getElementById('eventSoruce'));">댓글숨기기</a> -->
+<!-- <a id="eventSoruce" href="javascript:toggle(this);">댓글숨기기</a> -->
+<!-- 위에서 this는 window 객체를 의미, anchor 태그는 html속성이기 때문에 윈도우 객체꺼 -->
+ <div onclick="toggle(this);">댓글숨기기</div> <!-- 위에있는 것처럼 길게 써주지 않아도 되고 this만 써줘도 됨, 여기서 this는 div를 의미 -->
+<div id="reply" style="width:500p; height:200px; border: 1px solid blue;">요넘이 댓글 내용입니다..</div>
+임시 텍스트
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

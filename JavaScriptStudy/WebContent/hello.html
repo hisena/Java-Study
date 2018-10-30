@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<style type="text/css">
+</style>
+<script src="js/common.js"></script>
+
+</head>
+<body>
+
+<h2>오늘부터 자바스크립트 연습입니다..</h2>
+<p>
+JavaScript 특징
+인터프리터 언어 – 컴파일 과정을 거치지 않고 바로 실행시킬 수 있는 언어이다(빠르게 개발 가능하지만 디버깅이 어렵다)
+동적 타이핑(Typing) – 변수의 데이터타입을 선언하지 않고도 변수를 사용할 수 있다. 단순히 모든 변수는 var x;와 같이 선언한다.
+절차적 프로그래밍 지원 – C언어의 절차적 프로그래밍 지원한다. 즉 if, while, for 등의 제어 구조를 완벽하게 지원한다.
+객체 지향 프로그래밍 지원 – 자바스크립트는 자바 언어와 달리 클래스 기반이 아닌 프로토타입(prototype:원형) 기반 객체지향언어이다.
+함수형 프로그래밍 지원 – 함수는 실행코드를 가진 일급 객체(first-class object)로 취급되며 call(), apply() 등과 같은 다양한 메소드를 지원한다.
+</p>
+
+--------------------------------------------------------------------------------------------<br>
+<!-- 스크립트 선언 -->
+<script type="text/javascript"> //CSS는 style로 선언하고 스크립트는 script로 선언함
+//식별자, 키워드(다 소문자로 되어있음), 변수, 데이터타입, 연산자, 제어문, 함수, 객체
+document.write("<h2>안녕, 자바스크립트...</h2>");
+document.write("<p>김기정입니다.</p>");
+document.write(50+"<br>");
+document.write(true);
+document.write(false);
+
+</script>
+
+--------------------------------------------------------------------------------------------<br>
+
+<script type="text/javascript">
+//변수 선언
+
+//기본 데이터 타입
+
+var abc; //string 타입
+var cef;
+document.write('이거 띄어봐봐' + '<br>');
+document.write('이거 undefined 아니야?' + abc + '<br>');
+document.write('이거 undefined 아니야?' + cef + '<br>');
+abc = '나는 "김기정"입니다.'; //자바스크립트는 전부 ''로 쓰는 게 좋음
+document.write(abc);
+
+var a = 10, b = 20, c = 30; //number 타입
+cef = false;
+document.write(a);
+document.write(b);
+document.write(c);
+document.write(cef);
+
+var flag = true; //boolean 타입
+document.write(flag + '<br>');
+
+
+//레퍼런스 타입
+var message = new String('나는 레퍼런스 타입 문자열 객체입니다...');
+document.write(message.length);
+document.write(message);
+
+//변수 Overwrite 가능
+var a = 1000;
+document.write(a);
+
+//동적 타이핑
+abc = 5000;
+abc = false;
+
+document.write(abc);
+
+</script>
+
+<script type="text/javascript">
+//함수 선언
+function sum(x, y) { //여기에 sum이라는 함수 선언
+	return x + y;
+}
+//위에 head에서 함수선언 다 해주고 여기서 또 함수 선언해줘도 에러나지 않음
+//overwrite됨
+
+var x = 50, y = 40;
+var result = sum(x, y); //여기서 result로 다시 받음
+document.write(result);
+
+</script>
+</body>
+</html>

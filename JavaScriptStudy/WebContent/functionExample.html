@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>자바스크립트 함수</title>
+
+<script type="text/javascript">
+
+// #1. 선언형 함수 정의
+
+function sum(x, y, z) {
+
+  return x + y + z;
+
+}
+
+// #2. 익명 함수 정의
+
+var show = function(message){
+
+  document.write(message);
+
+}
+
+ 
+
+function some(callback){
+
+  callback();
+
+}
+
+ 
+
+function some2(){
+
+  return function(){
+
+    document.write("나눈 함수를 리턴한당");
+
+  };
+
+}
+
+ 
+
+// #3. 중첩 함수
+
+function hypotenus(a, b) {
+
+  function square(x) { 
+
+    //return x * x; 
+
+    return Math.pow(x, 2);
+
+  }
+
+  return Math.sqrt(square(a)+square(b));
+
+}
+
+ 
+
+// 비정형 인자 함수
+
+function summ() {
+
+  //console.log(arguments);
+
+  var result = 0;
+
+  for (var i in arguments) {
+
+    result += arguments[i];
+
+  }
+
+  return result;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+// window 객체에 등록된 sum 메소드 호출
+
+var result = sum(10,20,30);
+
+//var result = sum(10,20);
+
+document.write("결과: " + result);
+
+show('안녕');
+
+some(function(){
+
+  document.write('나눈 익명함수이당');
+
+});
+
+some2()();
+
+var hy = hypotenus(3, 4);
+
+document.write(hy);
+
+console.log(summ());
+
+console.log(summ(1));
+
+console.log(summ(1,2));
+
+console.log(summ(1,2,3,4));
+
+console.log(summ);
+
+console.log(typeof summ); //string, number, boolean, object, function
+
+ 
+
+(function () {
+
+  console.log("익명함수입니다....");
+
+})();
+
+</script>
+
+</body>
+
+</html>

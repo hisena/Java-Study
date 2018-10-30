@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+// 생성자를 이용한 배열 명시적 생성
+//var array = new Array(); //Map이 만들어진다고 생각하기
+//var array = new Array(10);
+var array = new Array(10, 20, 30, "김기정", new Date()); //자바스크립트에서 Array는 다 담을 수 있음
+console.log('배열 길이 : ' + array.length);
+console.log('배열 0번째 : ' + array[0]); 
+console.log('["0"]을 넣은 배열 0번째 : ' + array['0']); //이것과 위가 둘 다 같음. 그런데 ['0'] 이것이 더 정확
+
+console.log('for in 문으로 배열 출력');
+for ( var key in array) {
+	console.log(key);	
+}
+
+array.push("소영종");
+array.push(1000);
+
+console.log('전형적인 for문으로 배열 출력');
+for (var i = 0; i < array.length; i++) {
+	console.log(array[i]);
+}
+
+document.write('for in문 돌리기');
+for ( var i in array) {
+	document.write(array[i] + "<br>");
+}
+
+// 배열 묵시적 생성
+var array = [10, 20, 30];
+array.length = 0; // 배열 삭제 (수정 가능)
+document.write('10, 20, 30 묵시적 생성 후 for in문 돌리기');
+for ( var i in array) {
+	document.write(array[i] + "<br>");
+}
+
+// 주요 메소드
+array.push(10);
+array.push(20);
+array.push(30);
+array.unshift(5); //unshift: 맨앞에 넣어주는 것 (맨앞에 5를 넣어줌)
+document.write('10, 20, 30 push 후 for in문 돌리기');
+for ( var i in array) {
+	document.write(array[i] + "<br>");
+}
+
+document.write("---------------------<br>");
+var value = array.pop(); //맨 뒤에 있는 걸 제거하면서 가지고 오는 것
+document.write('pop한 값 : ' + value);
+document.write(array.pop());
+
+document.write(array.shift() + "<br>"); //맨 앞에 있는 걸 제거하면서 가지고 오는 것
+
+document.write("---------------------<br>");
+
+for ( var key in array) {
+	document.write(array[key] + "<br>");
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

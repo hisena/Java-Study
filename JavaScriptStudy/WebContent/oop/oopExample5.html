@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script type="text/javascript">
+//var product = new Object(); 이렇게 할 수도 있고
+//var product = {}; //이렇게 할 수도 있음
+
+//방법1
+// var product = {};
+//product.name = '7D 건조 망고';
+//product.type = '당절임';
+//product.element = '망고, 설탕';
+//product.origin = '필리핀';
+
+//방법2
+var product = {
+name: '7D 건조 망고',
+type: '당절임',
+element: '망고, 설탕',
+origin: '필리핀',
+price: 700
+};
+
+//동적 메소드 추가
+product.toString = function(){
+	return this.name + '\t' + this.type;
+
+}
+
+console.log(product.name);
+console.log(product['type']);
+console.log(product.element);
+console.log(product['origin']);
+console.log(product.price);
+
+console.log(product.toString());
+
+delete product.price;
+console.log(product.price);
+
+for ( var name in product) {
+	console.log(name + ":" + product[name]);
+}
+
+
+var string = new String("김기정");
+for ( var name in string) {
+	console.log(name + ":" + string[name]);
+}
+
+for ( var name in String.prototype) {
+	//console.log(name);
+}
+
+console.log('type' in product);
+</script>
+</head>
+</body>
+</html>

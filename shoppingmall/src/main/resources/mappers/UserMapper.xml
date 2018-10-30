@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="kr.or.kosta.shoppingmall.user">
+	
+	<!-- 회원 등록, create -->
+	<insert id="create" parameterType="User">
+		INSERT INTO users
+					(id,
+					 name, 
+					 passwd, 
+					 email, 
+					 regdate)
+		VALUES		(#{id}, 
+		             #{name},
+		             #{passwd}, 
+		             #{email}, 
+		             TO_DATE(#{regdate}, 'YYYY-MM-DD'))
+	</insert>	
+	
+		<!-- 회원번호로 회원 조회, read -->
+	<select id="read"  parameterType="int" resultType="User">
+		SELECT id,                      			 
+		       name,                    			, 
+		       passwd,				   			
+		       email,                   		 
+		       TO_CHAR(regdate, 'YYYY-MM-DD')   "regdate" 
+		FROM   users
+		WHERE  id = #{value} 
+	</select>
+	
+	<!-- 회원 정보 수정(set, if 태그를 이용한 동적 SQL) -->
+	<update id="update" parameterType="User">
+		UPDATE users
+		<set>
+	        <if test="passwd != null">passwd = #{passwd},</if>
+	        <if test="email != null">email = #{email}</if>
+	        <!-- MyBatis는 SET절의 끝에 콤마(,)가 있으면 제거 -->
+	    </set>
+	    WHERE id = #{id}
+	</update>
+	
+	<!-- 사원 삭제 --> <!-- IsExist라는 속성 하나 만들어서 그걸로 판단해주어야 함 -->
+	<delete id="delete" parameterType="int">
+	</delete>
+	
+	<!-- 전체회원 조회를 위한 SQL 매핑, listAll -->
+	<select id="listAll" resultType="User" >
+		SELECT id,                      		 
+		       name,                    		 
+		       passwd,				   			
+		       email,                   		 
+		       TO_CHAR(regdate, 'YYYY-MM-DD')   regdate 
+		FROM   users
+		ORDER  BY regdate ASC
+	</select>
+
+	<!-- 아이디와 비밀번호 일치여부 확인, certify -->
+	<select id="certify" parameterType="map" resultType="User" >
+		SELECT id,                      		 
+		       name,                    		 
+		       passwd,				   			
+		       email,                   		 
+		       TO_CHAR(regdate, 'YYYY-MM-DD')   "regdate" 
+		FROM   users
+		WHERE  id = #{id} AND passwd = #{passwd}
+	</select>
+	
+
+
+
+
+
+<!-- 여기까지 했음 -->
+
+
+
+
+
+
+	<!-- 사원번호에 해당하는 급여 조회 -->
+	<select id="selectSalaryById"  parameterType="java.lang.Integer" resultType="java.lang.Integer"> <!-- 가지고 오는 게 salary이기 때문에 resultType은 int로 -->
+		SELECT salary
+		FROM   employees
+		WHERE  employee_id = #{value}
+	</select>
+	
+	
+	<!-- 급여범위로 사원 검색 -->
+	<!-- <select id="selectEmployeesBySalary"  parameterType="java.util.HashMap" resultType="Employee"> -->
+	<select id="selectEmployeesBySalary"  parameterType="map" resultType="Employee">
+		SELECT employee_id                      "id", 
+		       first_name                       "firstName", 
+		       last_name                        "lastName", 
+		       email                            "email", 
+		       phone_number                     "phoneNumber", 
+		       TO_CHAR(hire_date, 'YYYY-MM-DD') "hireDate", 
+		       salary                           "salary" 
+		FROM   employees 
+		WHERE  salary BETWEEN #{min} AND #{max} 
+		<!-- WHERE salary &gt;= #{min} AND salary &lt;= #{max} -->
+	</select>
+	
+	
+	<!-- 성(last_name)으로 사원 검색(와일드카드 검색) -->
+	<select id="selectEmployeesByLastName"  parameterType="string" resultType="Employee"> <!-- parameterType은 안 써줘도 잘 돌아가긴 하지만 명시적으로 써주는 게 좋음 -->
+		SELECT employee_id                      "id", 
+		       first_name                       "firstName", 
+		       last_name                        "lastName", 
+		       email                            "email", 
+		       phone_number                     "phoneNumber", 
+		       TO_CHAR(hire_date, 'YYYY-MM-DD') "hireDate", 
+		       salary                           "salary" 
+		FROM   employees 
+		WHERE  UPPER(last_name) LIKE #{lastName} 
+	</select>
+	
+	
+	<!-- HashMap을 이용한 검색 : 조인 시 유용 -->
+	<select id="selectEmployeesWithDepartment"   resultType="map"> <!-- 밑에 있는 id, firstName 등이 map의 key값이 됨 -->
+		SELECT e.employee_id     "id", 
+		       e.first_name      "firstName", 
+		       e.last_name       "lastName", 
+		       d.department_name "departmentName" 
+		FROM   employees e 
+		       join departments d 
+		         ON e.department_id = d.department_id 
+	</select>
+	
+	<!-- 자주 사용되고, 자바빈의 속성이름과 테이블 컬럼이름이 다른 경우 resultMap 설정 -->
+	<resultMap  id="employeeResultMap" type="kr.or.kosta.shoppingmall.employee.domain.Employee">
+		<result property="id"           column="employee_id"/> <!-- property는 빈의 property 이름(자바객체의 속성 이름), column은 테이블의 속성 이름 -->
+		<result property="email"        column="email"/>
+		<result property="phoneNumber"  column="phone_number"/>
+		<result property="hireDate"     column="hire_date"/>
+	</resultMap>
+	
+	<!-- 전체사원 조회 -->
+	<select id="selectAll2" resultMap="employeeResultMap">
+		SELECT employee_id, 
+		       email, 
+		       phone_number, 
+		       TO_CHAR(hire_date, 'YYYY-MM-DD') "hire_date"
+		FROM   employees
+		ORDER BY hire_date ASC
+	</select>
+	
+	
+	<!-- 사원 삭제 -->
+	<delete id="deleteEmployee" parameterType="int">
+		DELETE FROM employees
+		WHERE  employee_id = #{value}
+	</delete>
+	
+	
+	<!-- 동적 SQL -->
+	<select id="dynamicSQL" parameterType="map" resultType="Employee">
+		SELECT employee_id "id", 
+		       first_name "firstName", 
+		       salary
+		FROM   employees
+		<if test="searchType != null">
+			<choose>
+				<when test="searchType == 'id'">
+				WHERE employee_id = #{searchValue}
+				</when>
+				<when test="searchType == 'name'">
+				WHERE first_name like #{searchValue}
+				</when>
+				<otherwise></otherwise>
+			</choose>
+		</if>
+	</select>
+		
+</mapper>

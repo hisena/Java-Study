@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+//변수 Hoisting (for문 안에서 선언한 변수라도 밖에서 쓸 수 있음을 의미)
+for(var i=0; i<10; i++) {
+	console.log(i);
+}
+
+console.log("for문 밖에서 : " + i);
+
+var message = "변수 사용범위"; //message: 전역변수(어디에서든 사용 가능)
+
+
+console.log(message);
+console.log(window.message);
+
+function x(){
+	//지역변수
+	var message2 = '메세지';	
+	//전역변수
+	message2 = '메세지'; //function 안에서 var를 써주지 않으면 전역변수가 됨
+	//function 안에서는 var 써서 나타내기
+}
+
+function y(){
+	console.log(message); //접근 가능(전역변수)
+	console.log(message2); //접근 안 됨(지역변수)
+}
+
+x();
+y(); //not defined라고 console에 뜰 것
+console.log(message2);
+console.log(window.message2);
+
+
+</script>
+
+</body>
+</html>

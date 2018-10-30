@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM 이해</title>
+</head>
+<body>
+	<span id="mySpan">스판입니다..</span>
+	<div>비다이드1입니다.</div>
+	<div>비다이드2입니다.</div>
+	<input type="text" name="userId" >
+
+<script type="text/javascript">
+	console.log("브라우저에 의해 BOM과 DOM이 생성 완료됨...");
+	
+	//alert(document.nodeType);
+	
+	// 현재 문서의 html 엘리먼트를 접근하고 싶어요..
+	var rootE = window.document.documentElement; //htmlElement를 접근하는 것
+	//var rootE = document.documentElement;
+	//console.log('constructor :' + rootE.constructor); //자바라면 getElement
+	//console.log(rootE.nodeName); //HTML
+	//console.log(rootE.nodeType); //1
+	//console.log(rootE.nodeValue); //nodevalue해도 어떤 특정한 값이 안나옴
+	
+	// html 엘리먼트의 자식 엘리먼트들 접근하기..
+	//var nodeList = rootE.childNodes; //부모 밑에 자식들에 접근할 때 쓰는 property
+	//console.log(nodeList);
+	//console.log(nodeList.constructor);
+	//console.log("html 엘리먼트의 자식엘리먼트 수: " + nodeList.length);
+	//html 옆의 빈 공백문자도 자식으로 들어감
+	
+	var e = window.document.getElementById("mySpan");
+	console.log("e의 생성자 :" + e.constructor); //HTMLSpanElement
+	console.log("e의 노드타입 :" + e.nodeType); //1
+	console.log("e의 노드네임 :" + e.nodeName); //SPAN
+	console.log("e의 노드밸류 :" + e.nodeValue); //value값은 null로 나옴
+
+	var array = document.getElementsByTagName("div"); //array가 아니라 nodelist임
+	console.log(array.length);
+	//for (var i = 0; i < array.length; i++) {
+	for (var i = 0; i < array.length; i++) {
+		var e = array.item(i);//nodelist의 item메소드
+		//console.log(e.nodeName);
+		//e.childeNodes[0].nodeValue;
+		//alert(e.nodeValue);
+		var text = e.firstChild; //자식객체 접근
+		console.log(text.constructor);		
+		console.log(text.nodeType);
+		console.log(text.nodeName);
+		console.log(text.nodeValue);
+	}
+
+	var array = document.getElementsByName("userId"); //array가 아니라 정확히 말하면 nodeList임
+	console.log(array.constructor);
+	var input = array.item(0);
+	console.log(input.constructor);
+
+	// 현재문서의 최상위 엘리먼트(html) 접근 속성
+	var htmlE = document.documentElement;
+	console.log(htmlE.nodeType);
+	console.log(htmlE.nodeName);
+	console.log(htmlE.nodeValue);
+	
+	document.childNodes[0];
+	//document.documentElement; 이것이 위에 있는 것과 같음 
+</script>
+
+</body>
+</html>

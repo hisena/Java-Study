@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>브라우저와 관련된 자바스크립트 객체(BOM)</title>
+</head>
+<body>
+<h2>Browser Object Model</h2>
+<script type="text/javascript">
+
+//console.log(window);
+//console.log(window.constructor);
+//for ( var name in window) {
+//	console.log(name + ":" + window[name]);
+//}
+
+//window.close();
+
+//console.log(this);
+//여기서 this는 window
+
+//function Student() {
+	//this. //여기서 this는 Student 
+//console.log(this.constructor);
+//}
+
+
+for ( var name in window.document) {
+	console.log(name + " : " + window.document[name]);
+}
+
+
+</script>
+
+</body>
+</html>

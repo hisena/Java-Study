@@ -1,0 +1,148 @@
+
+@charset "utf-8";
+
+h1 {
+	font-family: 나눔고딕;
+	margin: 10px;
+	text-align: center;
+	background-color: rgba(165, 255, 191, 0.7);
+	inline-size: 95%;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+body {
+	font-family: 나눔고딕;
+}
+
+div {
+	width: 90%;
+	border: 1px solid darkgray;
+	margin: 20px;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#div_body {
+	width: 65%;
+	border: none;
+	margin: auto;
+}
+
+#input_area {
+	width: 90%;
+	border: 2px solid;
+	margin: 15px;
+	padding: 20px;
+	font-weight: bold;
+}
+
+span {
+	margin-left: 15px;
+}
+
+header {
+	width: 90%;
+	border: none;
+	padding: 20px;
+}
+
+#kosta_span {
+	float: left;
+	width: 40%;
+	margin-left: 0px;
+}
+
+#kosta_img {
+	float: left;
+	width: 60%;
+}
+
+#hanaTI_span {
+	float: right;
+	width: 40%;
+	margin-left: 0px;
+}
+
+#hanaTI_img {
+	float: right;
+	width: 50%;
+}
+
+.input_box {
+	width: 30%;
+}
+
+#message_div {
+	width: 90%;
+	border: none;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+#message {
+	float: center;
+	width: 90%;
+	border: none;
+	text-align: center;
+	color: red;
+	background-color: white;
+}
+
+#caption_left {
+	float: left;
+	margin-left: 30px;
+	font-size: 0.8em;
+}
+
+#caption_right {
+	float: right;
+	margin-right: 65px;
+	font-size: 0.8em;
+}
+
+#div_table {
+	width: 90%;
+	height: 100%;
+	border: 1px solid;
+	margin: 20px;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+table {
+	border-collapse: collapse;
+	font-size: 0.8em;
+	padding: 10px;
+	width: 90%;
+	border: 1px;
+	margin-left: 20px;
+}
+
+tr {
+	text-align: center;
+}
+
+td {
+	border-bottom: 1px solid darkgray;
+	padding: 0.6em;
+	vertical-align: 4px;
+}
+
+th {
+	text-align: left;
+	border-top: 2px solid darkslategray;
+	border-bottom: 2px solid darkslategray;
+	padding: 0.6em;
+	vertical-align: 4px;
+}
+
+tbody th {
+	padding-left: 6%;
+	font-size: 1.1em;
+}
+
+tbody th, td {
+	background-color: rgba(191, 255, 207, 0.3);
+}

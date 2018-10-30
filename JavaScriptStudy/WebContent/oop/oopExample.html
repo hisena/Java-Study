@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script type="text/javascript">
+
+/** 사용자 정의 객체(생성자) */
+function Student(name, korean, math, english, science) {
+	this.name = name;
+	this.korean = korean;
+	this.math = math;
+	this.english = english;
+	this.science = science;
+	
+	
+	this.getSum = function(){
+		return this.korean + this.math + this.english + this.science;
+	}
+	
+	this.getAverage = function(){
+		return this.getSum() / 4;
+	}
+
+	this.toString = function(){ //이때 function은 메서드라고 함
+	return this.name+'\t'+this.korean+'\t'+this.math+'\t'+this.english+'\t'+this.science;
+	}
+	
+}
+
+Student.schoolName = "KOSTA 대학교"; //static 변수처럼 적용됨
+
+</script>
+
+
+
+</head>
+<body>
+<script type="text/javascript">
+
+var student = new Student('김기정', 90, 50, 98, 70);
+console.log(student.name);
+console.log(student.korean);
+console.log(student["math"]);
+
+console.log(typeof Student);
+console.log(typeof student);
+
+console.log(student.toString()); //객체의 toString
+console.log(student); //변수 이름만 주면 브라우저에 따라서 다르게 호출될 수 있기 때문에 toString 쓰는 게 좋음
+console.log(Student.schoolName);
+
+console.log("총점: " + student.getSum());
+console.log("평균: " + student.getAverage());
+
+</script>
+
+
+
+
+</body>
+</html>

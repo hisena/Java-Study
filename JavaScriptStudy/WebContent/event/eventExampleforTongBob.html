@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>이벤트 처리</title>
+</head>
+<body>
+
+<input type="button" value="클릭하세요. 자바스크립트" id="myButton"> <!-- 버튼이름이 클릭하세요. 자바스크립트 -->
+
+ 
+<script type="text/javascript">
+var eventSource = document.getElementById("myButton");
+console.log('생성자:' +  eventSource.constrctor);
+console.log(eventSource);
+
+
+//이벤트소스에 이벤트리스너 등록
+function someDo() {
+	alert("헐랭이...");
+}
+
+//방법 1
+//eventSource.onclick = function() { //이게 지금 null로 되어있음
+//	console.log("왜 눌렀어?");
+//}
+
+//방법 2 이미 function이 만들어져있을 때 전달만 하면 someDo가 자동호출됨
+//고전 이벤트 처리 모델 //지금도 아직 이걸 가장 많이 씀
+//당분간은 고전 이벤트 처리 모델 사용하기!!
+eventSource.onclick = someDo;
+
+
+//표준 이벤트 처리 모델
+//eventSource.addEventListener("click", function(e) {
+//	console.log("왜 눌렀어?");
+//}); //익명 메소드
+
+//eventSource.addEventListener("click", someDo); //메소드가 만들어져있을 때 //(이벤트이름, 처리하고자 하는 이벤트리스너);
+
+//익스플로러 이벤트 처리 모델(익스플로러만의 방식)
+//eventSource.attachEvent("onclick", someDo); //(이벤트 프로퍼티이름, 처리하고자 하는 이벤트리스너);
+//이것 아직도 크롬에서 작동 안 됨
+	
+
+</script>
+
+
+</body>
+</html>

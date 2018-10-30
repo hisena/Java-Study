@@ -1,0 +1,192 @@
+<!-- 
+  -- 은행계좌관리의 화면 형태, 데이터, 이벤트 설정
+  -- @author 류세은
+  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AMS</title>
+<link rel="stylesheet" type="text/css" href="css/cssAms.css">
+
+<script type="text/javascript" src="js/Account.js"></script>
+<script type="text/javascript" src="js/MinusAccount.js"></script>
+<script type="text/javascript" src="js/AccountManager.js"></script>
+<script type="text/javascript" src="js/Event.js"></script>
+<script type="text/javascript" src="js/Validation.js"></script>
+
+<script type="text/javascript">
+
+var account = new Account();
+var minusAccount = new MinusAccount();
+var accountManager = new AccountManager();
+
+
+/**
+ * 윈도우 브라우저 실행
+ */
+window.onload = function() {
+	init();
+	eventRegist();
+}
+
+/**
+ * 초기 설정
+ */
+function init() {
+	
+	accountManager.add(new Account('1111-2222', '류세은', 1111, 700000));
+	accountManager.add(new Account('1111-3333', '정동한', 2222, 400000));
+	accountManager.add(new Account('1111-4444', '안지현', 3333, 600000));
+	accountManager.add(new MinusAccount('1111-5555', '김한길', 4444, 500, 5000));
+	accountManager.add(new MinusAccount('1111-6666', '조한솔', 5555, 500, 70000));
+}
+
+/** 
+ * 이벤트소스에 이벤트리스너 등록
+ */
+function eventRegist(){
+
+	//전체조회 버튼 클릭시 전체계좌 화면출력
+	document.getElementById('list').onclick = list;
+	
+	//계좌번호로 조회
+	document.getElementById('get').onclick = get;
+	document.getElementById("accountNum").onkeyup = function(e){
+		if(e.keyCode ==13) {
+			get();
+		}	
+	}
+	
+	//계좌종류로 조회
+	document.getElementById('typeList').onclick = typelist;
+	
+	//계좌번호로 삭제
+	document.getElementById('remove').onclick = remove;
+	
+	//예금주명으로 검색
+	document.getElementById('search').onclick = search;
+	document.getElementById("accountOwner").onkeyup = function(e){
+		if (e.keyCode == 13) {
+			search();
+		}
+	}
+	
+	//계좌 신규등록
+	document.getElementById('add').onclick = add;
+	//restMoney 입력란에서 add를 위한 enter 작동
+	document.getElementById("restMoney").onkeyup = function(e){
+		if (e.keyCode == 13) {
+		add();
+		}
+	}
+	//borrowMoney 입력란에서 add를 위한 enter 작동
+	document.getElementById("borrowMoney").onkeyup = function(e){
+		if (e.keyCode == 13) {
+		add();
+		}
+	}
+	
+	//계좌종류 미선택여부 확인 및 대출금액입력란 block 설정
+	document.getElementById('accountType').onclick = borrowDisabled;
+	
+	//계좌번호 입력 정확성여부 확인
+	document.getElementById('accountNum').onchange = correctNum;
+	
+	//예금주명 입력 정확성여부 확인
+	document.getElementById('accountOwner').onchange = correctName;
+	
+	//비밀번호 입력 정확성여부 확인
+	document.getElementById('passwd').onchange = correctPw;
+	
+	//현재금액 입력 정확성여부 확인
+	document.getElementById('restMoney').onchange = correctRestMoney;
+	
+	//대출금액 입력 정확성여부 확인
+	document.getElementById('borrowMoney').onchange = correctBorrowMoney;
+	
+}
+
+</script>
+</head>
+
+<body>
+
+  <div id="div_body">
+
+    <header>
+      <span id="kosta_span"><img alt="KOSTA"
+        src="images/kosta.jpg" id="kosta_img"></span> <span
+        id="hanaTI_span"><img alt="HanaTI"
+        src="images/hanati.jpg" id="hanaTI_img"></span>
+    </header>
+
+    <div id="input_area">
+
+      <h1>은행계좌관리</h1>
+
+      <div>
+        <span>계좌종류</span> <span><select name="account_type"
+          id="accountType">
+            <option>전체
+            <option>입출금계좌
+            <option>마이너스계좌
+        </select> </span>
+      </div>
+
+      <div>
+        <span>계좌번호</span> <span><input type="text"
+          name="account_id" placeholder="ex)1234-4567" class="input_box"
+          id="accountNum"></span> <span>
+          <button id="get">번호로 조회</button>
+          <button id="typeList">종류로 조회</button>
+          <button id="remove">삭제</button>
+        </span>
+      </div>
+
+      <div>
+        <span>예금주명</span> <span><input type="text"
+          name="owner_name" class="input_box" id="accountOwner"></span>
+        <span>
+          <button id="search">검색</button>
+        </span>
+      </div>
+
+      <div>
+        <span>비밀번호</span> <span><input type="password"
+          name="account_pw" class="input_box" id="passwd"> </span> <span>입금금액</span>
+        <span><input type="number" name="rest_money"
+          class="input_box" id="restMoney"> </span>
+
+      </div>
+
+
+      <div>
+        <span>대출금액</span> <span><input type="number"
+          name="borrow_money" class="input_box" id="borrowMoney"></span>
+        <span>
+          <button id="add">신규등록</button>
+          <button id="list">전체조회</button>
+        </span>
+      </div>
+
+      <div id="message_div">
+        <span><input type="text" id="message" disabled></span>
+      </div>
+    </div>
+
+
+
+    <div id="div_table">
+      <span id="caption_left"> 계좌목록 </span> <span id="caption_right">
+        (단위:원)</span>
+
+
+      <table>
+      </table>
+
+    </div>
+  </div>
+</body>
+</html>

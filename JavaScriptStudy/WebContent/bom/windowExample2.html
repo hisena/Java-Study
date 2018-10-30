@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>브라우저 객체</title>
+</head>
+<body>
+<h2>스크립트엔진에 의해 미리 생성되어 있는 브라우저 관련 객체들(BOM)</h2>
+<script type="text/javascript">
+
+//window.open();
+//open("http://www.naver.com");
+//open("http://www.naver.com", "myWindow"); //창의 이름을 mywindow로 부여
+//open("http://www.naver.com", "myWindow", "width=200, height=100"); //창의 너비와 높이 설정
+//open("http://www.w3schools.com", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=200, left=200, width=400, height=400");
+
+
+function openWindow() { //window의 메소드로 들어감
+   myWindow = window.open("windowExample.html", "myWindow", "width=200, height=200");
+//var가 없기 때문에 window 객체에 myWindow가 들어감
+}
+
+function closeWindow() {
+    myWindow.close();
+//그냥 close하면 window 메인창이 닫힘
+//이건 myWindow.close이기 때문에 내가 만든 창이 닫힘
+}
+
+//openWindow();
+//closeWindow();
+
+window.setTimeout(function(){
+	//alert("경고창입니다..");
+	openWindow(); //익명함수로 표현해놓은 것
+}, 3000); //3000milisecond, 3초임
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

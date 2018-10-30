@@ -1,0 +1,21 @@
+h2 {
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+}
+
+p {
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+}
+
+.w3-input w3-padding-16 w3-border {
+	width: 50%;
+	margin: auto;
+}
+
+.w3-button w3-red w3-padding-large {
+	margin: auto;
+}

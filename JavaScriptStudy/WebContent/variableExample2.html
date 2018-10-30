@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>자바스크립트 함수</title>
+<script type="text/javascript">
+// #1. 선언형 함수 정의
+function sum(x, y, z){
+	return x + y + z;
+}
+
+// #2. 익명 함수 정의
+var show = function(message) {
+	document.write(message);
+}
+
+function some(callback) { //some 함수의 callback함수
+	callback();
+}
+
+function some2(){
+	
+	return function(){
+		document.write("리턴함수요...");
+	};
+}
+
+// #3. 중첩 함수(충돌방지)
+function hypotenus(a, b) {
+	function square(x){
+		//return x * x;
+		return Math.pow(x, 2); //위에 것과 같은 뜻
+	}
+	return Math.sqrt(square(a) + square(b));
+}
+
+// 비정형 인자함수 정의
+function summ() {
+	//console.log(arguments);//이것의 데이터타입이 배열이라고 생각하면 됨
+	var result = 0;
+	for ( var i in arguments) {
+		result += arguments[i];
+	}		
+	return result;
+}
+do
+</script>
+</head>
+<body>
+<script type="text/javascript">
+
+//sum(1, 2, 3);
+//show();
+
+//window 객체에 등록된 sum 메서드 호출
+var result = sum(10, 20, 30);
+//var result = sum(10, 20); //이렇게 하면 result : NaN(Not a Number)로 뜸
+//위에 function에 정의된  sum은 x, y, z의 합인데 z 초기값이 없어서 undefined 되기 때문에 NaN으로 뜸
+document.write("결과 : " + result);
+
+show("스크립트 어렵지 않아요...");
+
+some(function() {
+	document.write("익명함수 콜이요...");
+}); //함수를 바로 전달, some이 바로 함수 받음
+
+some2()(); //괄호를 왜 두 개로 써주는지 이해 안 됨
+
+alert(hypotenus(30, 20));
+
+console.log(summ());
+console.log(summ(1));
+console.log(summ(1, 2));
+console.log(summ(1, 2, 3));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<h2>DOM이란</h2>
+<p>자리돔이 최고여...</p>
+<h2>BOM이란</h2>
+<p>자리돔이 최고여...</p>
+<h2>Event란</h2>
+<p>자리돔이 최고여...</p>
+
+<script type="text/javascript">
+// DOM API를 이용한 DOM 객체 접근
+var array = document.getElementsByTagName("h2"); //계좌추가, 삭제할 때 쓰는 것
+console.log(array.length);
+/*
+for (var i = 0; i < array.length; i++) {
+	var obj = array[i];
+	console.log(obj.constructor); //htmlHeadingElement
+	obj.style="color:red";
+	
+}
+*/
+//위에 것과 밑에 것 차이 이해하기
+
+
+for ( var i in array) {
+	
+	var obj = array[i];
+	console.log(obj);
+	console.log(obj.constructor); 
+	obj.style="color:red";//obj에 스타일 추가
+}
+
+</script>
+
+</body>
+</html>

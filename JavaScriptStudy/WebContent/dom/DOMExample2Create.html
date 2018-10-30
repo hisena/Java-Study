@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM 이해</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+	// 동적 엘리먼트 생성
+	var element = document.createElement("h1"); //h1 태그 생김 
+	var text = document.createTextNode("안녕하세요 DOM"); //h1의 자식객체로 내용을 넣은 것
+	element.appendChild(text); //h1태그 만들어준 것과 내용을 연결해주는 것
+
+	//body에 h1 만든 걸 붙여주는 과정
+	document.getElementsByTagName("body").item(0).appendChild(element); //정통(표준) DOM, 이렇게 쓰는 게 좋음
+	//document.body.appendChild(element); //이건 DOM으로 접근하기 어려워서 간결화해놓은 것 //이렇게 쓸 수도 있음
+	//밑에 있는 걸 쓸 때는 익스플로러에서 해봐야 함
+
+	var imgE = document.createElement("img");
+	//imgE.src = "icons5575.png";
+	imgE.setAttribute("src", "icons4681.png"); //src: 속성이름, icons4681.png: 속성값 
+	document.body.appendChild(imgE);
+
+	
+	 //DOM이 아니지만 익스플로러에서 최초로 사용한 프로퍼티(편하게 만든 것)
+	document.body.innerHTML += "<h2>동적 엘리먼트 추가</h2>";
+	document.body.innerHTML += "<img src='icons5575.png'/>";
+</script>
+</body>
+
+</html>
+
+
+
+
+

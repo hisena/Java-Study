@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<title>이벤트 처리</title>
+<meta charset="utf-8">
+<script>
+window.onload = function () {
+	console.log(document.myForm.name); //form의 경우 속성(name, action, method)을 바로 접근할 수 있음
+	console.log(document.myForm.action);
+	console.log(document.myForm.method);
+	
+	document.myForm.name.onclick = function(){ //placeholder의 기능 //자바스크립트에서 이렇게 해줄 필요 없이 html의 placeholder 사용하면 됨
+		//document.myForm.name.value = ""; //name의 값을 입력할 때는 value를 씀
+		this.value = ""; //이게 훨씬 심플. 여기서 this는 name을 의미
+	}
+	
+	document.myForm.onsubmit = function () {
+		//var name = document.myForm.name.value;
+		var name = document.forms[0].elements[0].value; //for에 name이 없을 때는 이렇게 사용 //프로젝트에서는 이렇게 사용 안해도 됨
+		if(name == null || name.length == 0){
+			alert('이름을 입력하여 주세요.');
+			 document.myForm.name.focus(); //다시 칸에 커서 깜빡거리게 하는 것
+			return false; // 디폴트 이벤트핸들러 제거
+		}
+		return true;
+		//document.myForm.submit(); //return true 대신에 이 메소드를 쓸 수 있음
+	};
+};
+</script> 
+</head>
+<body>
+<!-- 이벤트는 submit하면서 되고, 이벤트리스너는 form에 action -->
+<form name="myForm" action="#"> <!-- #은 현재페이지라는 의미 -->
+  <input type="text" name="name" value="이름"/><br>
+  <input type="submit" value="제출"/>
+</form>
+</body>
+</html>
+
+
+
+
+

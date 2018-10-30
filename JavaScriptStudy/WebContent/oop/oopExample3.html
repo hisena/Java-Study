@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+
+
+
+</head>
+
+<body>
+<script type="text/javascript" src='../js/Student.js'>
+
+
+var student = new Student('김기정', 90, 50, 98, 70);
+
+console.log("총점: " + student.getSum()); //프로토타입에 저장되어 있는 getSum을 호출 
+console.log("평균: " + student.getAverage());
+console.log(student.toString());
+
+console.log(student.constructor);
+console.log(Student);
+
+var student2 = student.constructor('aaaa', 10, 20, 30, 40); //이렇게 쓸 일 거의 없음
+console.log(student2);
+
+console.log(Student.toString()); //Function의 프로토타입 객체의 toString();
+console.log(student.toString()); //Object 프로토타입 객체의 toString();
+
+//String.toString()은 내장형이기 때문에 보안상 sysout 찍어도 안 나옴
+
+for ( var key in Student.prototype) {
+	console.log(key);
+}
+
+</script>
+
+
+</body>
+</html>

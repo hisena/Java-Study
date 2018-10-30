@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+
+window.onload = function() {
+	  init();
+	  eventRegist();
+	  appendText("헐랭이");
+	}
+
+	function init() {
+	  //초기화 작업(setcontents 역할)
+	}
+
+	function eventRegist(){
+		var target = document.getElementById("inputTF");
+		target.onkeyup = function(e) {
+			var event = e || window.event;//모든 브라우저의 호환성 고려
+			if(e.keyCode == 13) { //엔터값이 13으로 되어있음
+				appendText();
+			}
+			
+		}
+		
+		document.getElementById("sendB").onclick = function() {
+				appendText();
+		}
+		
+	} 
+
+
+	function appendText() {
+		var input = document.getElementById("inputTF");
+		var meesageTA = document.getElementById("messageTA");
+		//그냥 엔터쳤을 때, 스페이스 막 쳤을 때 유효성검증하는 것 넣어야 함
+		var text = input.value;
+		messageTA.value += text; + "\r\n";
+		input.value="";
+		input.focus();
+		
+	}
+
+	
+
+
+
+	</script>
+
+</head>
+<body>
+<textarea rows="5" cols="50" id="messageTA"></textarea><br>
+<input type="text" size="40" maxlength="30" id="inputTF"><input type="button" value="전송" id="sendB">
+
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>이벤트 처리</title>
+<script type="text/javascript">
+window.onload = function() {
+	init();
+	eventRegist();
+}
+
+function init() {
+	//초기화 작업(setcontents 역할)
+}
+
+/** 이벤트소스에 이벤트리스너 등록*/
+function eventRegist(){
+	document.getElementById('myButton').onclick = function(){
+		exit();
+	}	
+}
+
+function exit(){
+	close();
+}
+
+
+</script>
+
+</head>
+<body>
+
+<input type="button" value="클릭하세요. 자바스크립트" id="myButton"> <!-- 버튼이름이 클릭하세요. 자바스크립트 -->
+
+</body>
+</html>

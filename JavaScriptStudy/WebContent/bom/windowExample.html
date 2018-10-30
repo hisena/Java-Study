@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>브라우저 객체</title>
+</head>
+<body>
+<h2>스크립트엔진에 의해 미리 생성되어 있는 브라우저 관련 객체들(BOM)</h2>
+<iframe src="http://www.daum.net"></iframe>
+<iframe src="http://www.daum.net"></iframe>
+<iframe src="http://www.daum.net"></iframe>
+<iframe src="http://www.daum.net"></iframe>
+
+<script type="text/javascript">
+//console.log(Window);
+//console.log(window.constructor);
+
+/*
+for(var key in window) {
+	console.log(key + ": " + window[key]);
+}
+*/
+
+// 대표적인 프로퍼티들...
+console.log(window.screenX); //browser가 찍히는 x값 //이건 지금 화면 위치 읽어오는 것
+//화면창의 위치를 마우스로 옮기면 값이 바뀜
+console.log(window.screenLeft); //위에것과 똑같음
+console.log(window.screenY);//browser가 찍히는 y값
+console.log(window.screenTop);
+
+//console.log(window.document);
+console.log(window.document.constructor);
+console.log(window.frames.constructor);
+console.log(window.history.constructor);
+console.log(window.location.constructor);
+console.log(navigator.constructor);
+console.log(window.frames.length);
+
+console.log(frames[0].constructor);
+console.log(frames[0].document);
+
+screenX = 100;
+screenY = 100;
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

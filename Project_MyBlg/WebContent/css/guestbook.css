@@ -1,0 +1,133 @@
+/***** Base Reset Style *****/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline
+}
+
+ol, ul {
+	list-style: none
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	margin: auto;
+}
+
+/** orderTable **/
+.guest_list {
+	font-size: 12px;
+	color: #777;
+	width: 100%;
+	border: 0;
+	cellspacing: 0;
+	cellpadding: 0;
+}
+
+.guest_list thead tr th {
+	height: 30px;
+	color: #fff;
+	font-weight: bold;
+	background: #333;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.guest_list tbody tr td {
+	padding: 10px;
+	text-align: center;
+	line-height: 18px;
+	border-bottom: solid 1px #eee;
+	vertical-align: middle
+}
+
+.guest_list tbody tr .tLeft {
+	text-align: left
+}
+
+.guest_list tbody tr td a {
+	color: #777
+}
+
+.guest_list tbody .notice td {
+	background: #f6f6f6
+}
+
+.guest_list tbody tr:hover td {
+	background: #fafafa
+}
+
+hr, legend, caption {
+	font-size: 0;
+	height: 0px
+}
+
+a {
+	text-decoration: none;
+	color: inherit
+}
+
+a:hover {
+	text-decoration: none
+}
+
+img {
+	vertical-align: middle;
+	font-size: 11px
+}
+
+select {
+	vertical-align: middle
+}
+
+textarea {
+	line-height: 18px;
+	font-size: 12px;
+	color: inherit
+}
+
+/***** Work Style *****/
+.wrap {
+	width: 80%;
+	margin: 0 auto
+}
+
+#title {
+	list-style: none;
+	text-align: center;
+	font-family: inherit;
+	font-size: 30px;
+	font-weight: bold;
+	width: 70%;
+	margin: auto;
+	padding: 10px;
+}
+
+#guestbook {
+	width: 60%;
+	margin: auto;
+	text-align: left;
+}
+
+#guestcomments {
+	width: 80%;
+	vertical-align: middle;
+	margin-right: 5%;
+	height: 50px;
+}
+
+#guestbookadd {
+	width: 100px;
+	background-color: dimgray;
+}

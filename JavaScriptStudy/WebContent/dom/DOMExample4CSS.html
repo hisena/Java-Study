@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM 이해</title>
+</head>
+<body>
+	<h1 id="header">CSS 동적 적용하기</h1>
+
+	<h2 class="myClass">AAAAAAAAAA</h2>
+	<h2 class="myClass">BBBBBBBBBB</h2>
+	<h2 class="myClass">CCCCCCCCCC</h2>
+	<h2 class="myClass">AAAAAAAAAA</h2>
+	
+<script type="text/javascript">
+	//var header = document.getElementById("header");
+	
+	//ecma 5 추가 메소드
+	//querySelector: CSS 선택자로 접근
+	var header = document.querySelector("#header"); //이거 대신 그냥 위에있는 것 쓰면 됨, id를 위한 건 이걸 잘 안 씀 
+	console.log(header);
+	header.style.color = "blue";
+	//header.style["background-color"] = "blue"; //dash(-)가 들어가는 건 대괄호[] 사용해서 접근
+	header.style.backgroundColor = "yellow";//아니면 카멜표기법으로 쓰든지
+	header.style.border = "2px double red";//축약해서 쓰는 건 그냥 쓰던대로 쓰면 됨
+	
+	var list = document.querySelectorAll(".myClass");//클래스선택자를 할 때는 querySelector사용
+	for (var i = 0; i < list.length; i++) {
+		list[i].style.color = "#0000FF";
+	}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

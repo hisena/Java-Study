@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+document.write("<h3>애플리케이션 시작됨</h3>");
+try {
+var str = null;
+document.write(str.charAt(5)); //이게 없기 때문에 그냥 안 뜸. 애플리케이션 종료됨도 안 뜸
+} catch (e) {
+	console.log(e.toString());
+} finally { //자바스크립트는 finally 잘 안 쓰긴 함
+	console.log("항상 실행");
+}
+//document.write(10/0); //infinity라고 뜸(예외처리 안 됨)
+
+//var array = [10, 20, 30];
+//document.write(array[0]); //에러 아님
+//document.write(array[3]); //에러로 안 뜨고 undefined로 뜸
+document.write("<h3>애플리케이션 종료됨</h3>");
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<h2>aaaaaaaa</h2>
+<h2>aaaaaaaa</h2>
+<h2>aaaaaaaa</h2>
+
+<script>
+var list = document.body.childNodes;
+console.log(list.length); //8개가 뜸 (body와 h2 사이사이 공백들, script까지  다 생각해줘서)
+for (var i = 0; i < list.length; i++) {
+	var node=list.item(i);
+	console.log(node.nodeName);
+	if(node.nodetype == Node.ELEMENT_NODE && node.nodeName == "H2") {
+		node.style = "border: 2px solid blue";
+	}
+}
+</script>
+</body>
+</html>
